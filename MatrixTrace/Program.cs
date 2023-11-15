@@ -9,17 +9,6 @@
 
             while (true)
             {
-                Console.WriteLine("Enter the number of columns: ");
-                var input = Console.ReadLine();
-                if (ushort.TryParse(input, out columns))
-                {
-                    Console.Clear();
-                    break;
-                }
-                
-            }
-            while (true)
-            {
                 Console.WriteLine("Enter the number of rows: ");
                 var input = Console.ReadLine();
                 if (ushort.TryParse(input, out rows))
@@ -28,6 +17,17 @@
                     break;
                 }
             }
+            while (true)
+            {
+                Console.WriteLine("Enter the number of columns: ");
+                var input = Console.ReadLine();
+                if (ushort.TryParse(input, out columns))
+                {
+                    Console.Clear();
+                    break;
+                }
+                
+            }          
 
             Console.WriteLine($"Matrix size: {rows} x {columns}\n");
 
@@ -35,8 +35,12 @@
             matrixObj.DiagonalShow();
 
             Console.WriteLine($"\nSum of elements on the diagonal: {matrixObj.DiagonaSum()}");
-            Console.WriteLine($"List of elements in the form of a snake: \n");
-            
+            Console.WriteLine($"List of elements in the form of a snake: ");
+
+            for (int i = 0; i < (rows * columns); i++)
+            {
+                Console.Write(matrixObj.ElementsFormOfSnake()[i] + " ");
+            }
         }
     }
 }
