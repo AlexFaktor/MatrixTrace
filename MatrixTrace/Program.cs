@@ -10,36 +10,33 @@
             while (true)
             {
                 Console.WriteLine("Enter the number of rows: ");
-                var input = Console.ReadLine();
-                if (ushort.TryParse(input, out rows))
+                var inputRows = Console.ReadLine();
+                Console.WriteLine("Enter the number of columns: ");
+                var inputColumns = Console.ReadLine();
+
+                if (ushort.TryParse(inputRows, out rows ) && ushort.TryParse(inputColumns, out columns))
                 {
                     Console.Clear();
                     break;
                 }
             }
-            while (true)
-            {
-                Console.WriteLine("Enter the number of columns: ");
-                var input = Console.ReadLine();
-                if (ushort.TryParse(input, out columns))
-                {
-                    Console.Clear();
-                    break;
-                }
-                
-            }          
 
             Console.WriteLine($"Matrix size: {rows} x {columns}\n");
 
-            Matrix matrixObj = new(rows, columns);
-            matrixObj.DiagonalShow();
+            Matrix matrix = new(rows, columns);
 
-            Console.WriteLine($"\nSum of elements on the diagonal: {matrixObj.DiagonaSum()}");
+            MatrixTools.FillMatrixRandomNumbersInRange(matrix, 0, 101);
+
+            MatrixShow.ShowDiagonal(matrix);
+
+            Console.WriteLine($"\nSum of elements on the diagonal: {MatrixTools.DiagonalSum(matrix)}");
             Console.WriteLine($"List of elements in the form of a snake: ");
 
-            for (int i = 0; i < (rows * columns); i++)
-            {
-                Console.Write(matrixObj.ElementsFormOfSnake()[i] + " ");
+            List<byte> snake = MatrixTools.ElementsFormOfSnake(matrix);
+
+            foreach (byte el in snake)
+            { 
+                Console.Write(el + " ");
             }
         }
     }
