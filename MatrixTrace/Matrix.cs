@@ -23,10 +23,41 @@ namespace MatrixTrace
             get { return _columns; }
             set { _columns = value; }
         }
+        public byte this[int row, int column]
+        {
+            get
+            {
+                return _matrix[row, column];
+            }
+            set
+            {
+                _matrix[row, column] = value;
+            }
+        }
         public byte[,] GetMatrix()
-        { return _matrix; }
-        public void SetMatrix(byte[,] value)
-        { _matrix = value; }
+        {
+            byte[,] matrix = new byte[_rows, _columns];
+
+            for (int i = 0; i < _rows; i++)
+            {
+                for (int j = 0; j < _columns; j++)
+                {
+                    matrix[i, j] = _matrix[i, j];
+                }
+            }
+
+            return matrix; 
+        }
+        public void SetMatrix(byte[,] matrix)
+        {
+            for (int i = 0; i < _rows; i++)
+            {
+                for (int j = 0; j < _columns; j++)
+                {
+                    _matrix[i, j]= matrix[i, j];
+                }
+            }
+        }
 
         public Matrix(ushort rows, ushort columns)
         {
@@ -43,6 +74,22 @@ namespace MatrixTrace
             _matrix = matrix ?? throw new ArgumentNullException(nameof(matrix), "The matrix cannot be null");
             _rows = (ushort)_matrix.GetLength(0);
             _columns = (ushort)_matrix.GetLength(1);
+        }
+
+        /// <summary>
+        /// Fills the matrix in the selected range from 0 to 255
+        /// </summary>
+        public void FillMatrixRandomNumbersInRange(int min, int max)
+        {
+            Random random = new();
+
+            for (int i = 0; i < _rows; i++)
+            {
+                for (int j = 0; j < _columns; j++)
+                {
+                    _matrix[i, j] += (byte)random.Next(min, max);
+                }
+            }
         }
     }
 }

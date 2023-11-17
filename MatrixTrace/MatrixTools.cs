@@ -12,38 +12,13 @@ namespace MatrixTrace
     public class MatrixTools
     {
         /// <summary>
-        /// Fills the matrix in the selected range from 0 to 255
-        /// </summary>
-        public static void FillMatrixRandomNumbersInRange(Matrix inputMatrix, int min, int max)
-        {
-            int rows = inputMatrix.Rows;
-            int columns = inputMatrix.Columns;
-            byte[,] matrix = inputMatrix.GetMatrix();
-
-            Random random = new();
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    matrix[i, j] += (byte)random.Next(min, max);
-                }
-            }
-        }
-
-
-        /// <summary>
         /// Returns the sum of the elements on the diagonal of the matrix
         /// </summary>
-        public static int DiagonalSum(Matrix inputMatrix)
+        public static int DiagonalSum(Matrix matrix)
         {
-            int rows = inputMatrix.Rows;
-            int columns = inputMatrix.Columns;
-            byte[,] matrix = inputMatrix.GetMatrix();
-
             int sum = 0;
 
-            int minSize = Math.Min(rows, columns);
+            int minSize = Math.Min(matrix.Rows, matrix.Columns);
 
             for (int i = 0; i < minSize; i++)
             {
@@ -56,57 +31,59 @@ namespace MatrixTrace
         /// <summary>
         /// From the selected position, from left to right, returns the selected number of items
         /// </summary>
-        private static IEnumerable<byte> ElementsLeftToRight(byte[,] matrix, int[]position, int step)
+        private static IEnumerable<byte> ElementsLeftToRight(Matrix matrix, int[]position, int step)
         {
             for (int i = 0; i < step; i++)
             {
                 yield return matrix[position[0], position[1] + i];
             }
         }
+
         /// <summary>
         /// From the selected position, from top to bottom, returns the selected number of items
         /// </summary>
-        private static IEnumerable<byte> ElementsUpToDown(byte[,] matrix, int[] position, int step)
+        private static IEnumerable<byte> ElementsUpToDown(Matrix matrix, int[] position, int step)
         {
             for (int i = 0; i < step; i++)
             {
                 yield return matrix[position[0] + i , position[1]];
             }
         }
+
         /// <summary>
         /// From the selected position, from right to left, returns the selected number of items
         /// </summary>
-        private static IEnumerable<byte> ElementsRightToLeft(byte[,] matrix, int[] position, int step)
+        private static IEnumerable<byte> ElementsRightToLeft(Matrix matrix, int[] position, int step)
         {
             for (int i = 0; i < step; i++)
             {
                 yield return matrix[position[0], position[1] - i];
             }
         }
+
         /// <summary>
         /// From the selected position, from right to left, returns the selected number of items
         /// </summary>
-        private static IEnumerable<byte> ElementsDownToUp(byte[,] matrix, int[] position, int step)
+        private static IEnumerable<byte> ElementsDownToUp(Matrix matrix, int[] position, int step)
         {
             for (int i = 0; i < step; i++)
             {
                 yield return matrix[position[0] - i, position[1]];
             }
         }
+
         /// <summary>
         /// Returns a list of matrix elements in the form of a snake
         /// </summary>s>
-        public static List<byte> ElementsFormOfSnake(Matrix inputMatrix)
+        public static List<byte> ElementsFormOfSnake(Matrix matrix)
         {
-            byte[,] matrix = inputMatrix.GetMatrix();
-
-            int sumOfAllElements = inputMatrix.GetMatrix().Length;
+            int sumOfAllElements = matrix.GetMatrix().Length;
             int addedElements = 0;
 
             int[] position = new int[] { 0, 0 };
 
-            int forRows = inputMatrix.Rows - 2;
-            int forColumns = inputMatrix.Columns;
+            int forRows = matrix.Rows - 2;
+            int forColumns = matrix.Columns;
 
             List<byte> output = new();
 

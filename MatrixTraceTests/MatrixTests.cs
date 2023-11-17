@@ -10,9 +10,9 @@ namespace MatrixTraceTests
         {
             Matrix matrix = new(new byte[,]
             {
-                { 11, 0, 0},
-                { 0, 22, 0},
-                { 0, 0, 33}
+                { 11, 12, 13},
+                { 21, 22, 23},
+                { 31, 32, 33}
             });
             int expected = 66;
 
@@ -26,9 +26,9 @@ namespace MatrixTraceTests
         {
             Matrix matrix = new(new byte[,]
             {
-                { 11, 0, 0, 0, 0},
-                { 0, 22, 0, 0, 0},
-                { 0, 0, 33, 0, 0}
+                { 11, 12, 13, 14, 15},
+                { 21, 22, 23, 24, 25},
+                { 31, 32, 33, 34, 35}
             });
             int expected = 66;
 
@@ -42,11 +42,11 @@ namespace MatrixTraceTests
         {
             Matrix matrix = new(new byte[,]
             {
-                { 11, 0, 0},
-                { 0, 22, 0},
-                { 0, 0, 33 },
-                { 0, 0, 0},
-                { 0, 0, 0}
+                { 11, 12, 13},
+                { 21, 22, 23},
+                { 31, 32, 33 },
+                { 41, 42, 43},
+                { 51, 52, 53}
             });
             int expected = 66;
 

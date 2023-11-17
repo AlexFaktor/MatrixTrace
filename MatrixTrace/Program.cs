@@ -25,7 +25,7 @@
 
             Matrix matrix = new(rows, columns);
 
-            MatrixTools.FillMatrixRandomNumbersInRange(matrix, 0, 101);
+            matrix.FillMatrixRandomNumbersInRange(0, 101);
 
             MatrixShow.ShowDiagonal(matrix);
 
