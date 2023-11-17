@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MatrixTrace
+﻿namespace MatrixTrace
 {
     public static class MatrixShow
     {
         /// <summary>
         /// Displays the diagonal of the matrix in the console 
         /// </summary>
-        public static void ShowDiagonal(Matrix inputMatrix)
+        public static void ShowDiagonal(Matrix matrix)
         {
-            int rows = inputMatrix.Rows;
-            int columns = inputMatrix.Columns;
-            byte[,] matrix = inputMatrix.GetMatrix();
+            int rows = matrix.Rows;
+            int columns = matrix.Columns;
 
             for (int i = 0; i < rows; i++)
             {

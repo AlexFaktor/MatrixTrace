@@ -16,7 +16,7 @@ namespace MatrixTraceTests
             });
             int expected = 66;
 
-            int actual = MatrixTools.DiagonalSum(matrix);
+            int actual = matrix.DiagonalSum();
 
             Assert.AreEqual(expected, actual);
         }
@@ -32,7 +32,7 @@ namespace MatrixTraceTests
             });
             int expected = 66;
 
-            int actual = MatrixTools.DiagonalSum(matrix);
+            int actual = matrix.DiagonalSum();
 
             Assert.AreEqual(expected, actual);
         }
@@ -50,7 +50,7 @@ namespace MatrixTraceTests
             });
             int expected = 66;
 
-            int actual = MatrixTools.DiagonalSum(matrix);
+            int actual = matrix.DiagonalSum();
 
             Assert.AreEqual(expected, actual);
         }
@@ -66,7 +66,7 @@ namespace MatrixTraceTests
             });
             List<byte> expected = new() { 1, 2, 3, 4, 5, 9, 2, 3, 4, 8, 7, 6 };
 
-            List<byte> actual = MatrixTools.ElementsFormOfSnake(matrix);
+            List<byte> actual = matrix.ElementsFormOfSnake();
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -82,7 +82,7 @@ namespace MatrixTraceTests
             });
             List<byte> expected = new() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
 
-            List<byte> actual = MatrixTools.ElementsFormOfSnake(matrix);
+            List<byte> actual = matrix.ElementsFormOfSnake();
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -98,7 +98,7 @@ namespace MatrixTraceTests
             });
             List<byte> expected = new() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
 
-            List<byte> actual = MatrixTools.ElementsFormOfSnake(matrix);
+            List<byte> actual = matrix.ElementsFormOfSnake();
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -118,7 +118,7 @@ namespace MatrixTraceTests
             });
             List<byte> expected = new() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
 
-            List<byte> actual = MatrixTools.ElementsFormOfSnake(matrix);
+            List<byte> actual = matrix.ElementsFormOfSnake();
 
             CollectionAssert.AreEqual(expected, actual);
         }

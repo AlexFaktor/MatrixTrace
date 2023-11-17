@@ -14,7 +14,7 @@
                 Console.WriteLine("Enter the number of columns: ");
                 var inputColumns = Console.ReadLine();
 
-                if (ushort.TryParse(inputRows, out rows ) && ushort.TryParse(inputColumns, out columns))
+                if (ushort.TryParse(inputRows, out rows) && ushort.TryParse(inputColumns, out columns))
                 {
                     Console.Clear();
                     break;
@@ -25,17 +25,17 @@
 
             Matrix matrix = new(rows, columns);
 
-            matrix.FillMatrixRandomNumbersInRange(0, 101);
+            MatrixTools.FillMatrixRandomNumbersInRange(matrix, 0, 101);
 
             MatrixShow.ShowDiagonal(matrix);
 
-            Console.WriteLine($"\nSum of elements on the diagonal: {MatrixTools.DiagonalSum(matrix)}");
+            Console.WriteLine($"\nSum of elements on the diagonal: {matrix.DiagonalSum()}");
             Console.WriteLine($"List of elements in the form of a snake: ");
 
-            List<byte> snake = MatrixTools.ElementsFormOfSnake(matrix);
+            List<byte> snake = matrix.ElementsFormOfSnake();
 
             foreach (byte el in snake)
-            { 
+            {
                 Console.Write(el + " ");
             }
         }
