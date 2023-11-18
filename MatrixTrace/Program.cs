@@ -2,28 +2,27 @@
 {
     internal class Program
     {
-        static void Main()
+        public static int InputNumber(string msg)
         {
-            ushort rows;
-            ushort columns;
-
             while (true)
             {
-                Console.WriteLine("Enter the number of rows: ");
-                var inputRows = Console.ReadLine();
-                Console.WriteLine("Enter the number of columns: ");
-                var inputColumns = Console.ReadLine();
+                Console.WriteLine(msg);
+                var input = Console.ReadLine();
 
-                if (ushort.TryParse(inputRows, out rows) && ushort.TryParse(inputColumns, out columns))
-                {
-                    Console.Clear();
-                    break;
-                }
+                if (int.TryParse(input, out int output))
+                    return output;
             }
+        }
 
-            Console.WriteLine($"Matrix size: {rows} x {columns}\n");
+        static void Main()
+        {
+            var rowCount = InputNumber("Enter the number of rows: ");
+            var columnCount = InputNumber("Enter the number of columns: ");
 
-            Matrix matrix = new(rows, columns);
+            Console.Clear();
+            Console.WriteLine($"Matrix size: {rowCount} x {columnCount}\n");
+
+            Matrix matrix = new((ushort)rowCount, (ushort)columnCount);
 
             matrix.FillRandomNumbersInRange(0, 101);
 
