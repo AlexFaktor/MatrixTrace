@@ -69,44 +69,44 @@
         /// <summary>
         /// From the selected position, from left to right, returns the selected number of items
         /// </summary>
-        private static IEnumerable<byte> ElementsLeftToRight(Matrix matrix, int[] position, int step)
+        private static IEnumerable<byte> ElementsLeftToRight(Matrix matrix, System.Drawing.Point position, int step)
         {
             for (int i = 0; i < step; i++)
             {
-                yield return matrix[position[0], position[1] + i];
+                yield return matrix[position.X, position.Y + i];
             }
         }
 
         /// <summary>
         /// From the selected position, from top to bottom, returns the selected number of items
         /// </summary>
-        private static IEnumerable<byte> ElementsUpToDown(Matrix matrix, int[] position, int step)
+        private static IEnumerable<byte> ElementsUpToDown(Matrix matrix, System.Drawing.Point position, int step)
         {
             for (int i = 0; i < step; i++)
             {
-                yield return matrix[position[0] + i, position[1]];
+                yield return matrix[position.X + i, position.Y];
             }
         }
 
         /// <summary>
         /// From the selected position, from right to left, returns the selected number of items
         /// </summary>
-        private static IEnumerable<byte> ElementsRightToLeft(Matrix matrix, int[] position, int step)
+        private static IEnumerable<byte> ElementsRightToLeft(Matrix matrix, System.Drawing.Point position, int step)
         {
             for (int i = 0; i < step; i++)
             {
-                yield return matrix[position[0], position[1] - i];
+                yield return matrix[position.X, position.Y - i];
             }
         }
 
         /// <summary>
         /// From the selected position, from right to left, returns the selected number of items
         /// </summary>
-        private static IEnumerable<byte> ElementsDownToUp(Matrix matrix, int[] position, int step)
+        private static IEnumerable<byte> ElementsDownToUp(Matrix matrix, System.Drawing.Point position, int step)
         {
             for (int i = 0; i < step; i++)
             {
-                yield return matrix[position[0] - i, position[1]];
+                yield return matrix[position.X - i, position.Y];
             }
         }
 
@@ -118,7 +118,7 @@
             int sumOfAllElements = _rowCount * _columnsCount;
             int addedElements = 0;
 
-            int[] position = new int[] { 0, 0 };
+            System.Drawing.Point position = new(0, 0);
 
             int forRows = _rowCount - 2;
             int forColumns = _columnsCount;
@@ -131,10 +131,10 @@
                 if (forColumns > 0)
                 {
                     output.AddRange(ElementsLeftToRight(this, position, forColumns));
-                    position[1] += forColumns - 1;
+                    position.Y += forColumns - 1;
                     addedElements += forColumns;
 
-                    position[0] = position[0] + 1;
+                    position.X++;
                 }
                 if (addedElements == sumOfAllElements)
                     break;
@@ -143,10 +143,10 @@
                 if (forRows > 0)
                 {
                     output.AddRange(ElementsUpToDown(this, position, forRows));
-                    position[0] += forRows - 1;
+                    position.X += forRows - 1;
                     addedElements += forRows;
 
-                    position[0] = position[0] + 1;
+                    position.X++;
                 }
                 if (addedElements == sumOfAllElements)
                     break;
@@ -155,10 +155,10 @@
                 if (forColumns > 0)
                 {
                     output.AddRange(ElementsRightToLeft(this, position, forColumns));
-                    position[1] -= forColumns - 1;
+                    position.Y -= forColumns - 1;
                     addedElements += forColumns;
 
-                    position[0] = position[0] - 1;
+                    position.X--;
                 }
 
                 if (addedElements == sumOfAllElements)
@@ -170,10 +170,10 @@
                 if (forRows > 0)
                 {
                     output.AddRange(ElementsDownToUp(this, position, forRows));
-                    position[0] -= forRows - 1;
+                    position.X -= forRows - 1;
                     addedElements += forRows;
 
-                    position[1] = position[1] + 1;
+                    position.Y++;
                 }
 
                 if (addedElements == sumOfAllElements)

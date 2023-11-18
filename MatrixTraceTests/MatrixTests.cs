@@ -10,11 +10,11 @@ namespace MatrixTraceTests
         {
             Matrix matrix = new(new byte[,]
             {
-                { 11, 12, 13},
-                { 21, 22, 23},
-                { 31, 32, 33}
+                { 1, 10, 21},
+                { 5, 30, 42},
+                { 9, 59, 83}
             });
-            int expected = 66;
+            int expected = 114;
 
             int actual = matrix.DiagonalSum();
 
@@ -26,11 +26,11 @@ namespace MatrixTraceTests
         {
             Matrix matrix = new(new byte[,]
             {
-                { 11, 12, 13, 14, 15},
-                { 21, 22, 23, 24, 25},
-                { 31, 32, 33, 34, 35}
+                { 1, 10, 21, 43, 100},
+                { 5, 30, 42, 56, 200},
+                { 9, 59, 83, 69, 230}
             });
-            int expected = 66;
+            int expected = 114;
 
             int actual = matrix.DiagonalSum();
 
@@ -42,13 +42,13 @@ namespace MatrixTraceTests
         {
             Matrix matrix = new(new byte[,]
             {
-                { 11, 12, 13},
-                { 21, 22, 23},
-                { 31, 32, 33 },
-                { 41, 42, 43},
-                { 51, 52, 53}
+                { 1, 10, 21},
+                { 5, 30, 42},
+                { 9, 59, 83 },
+                { 13, 75, 160},
+                { 17, 100, 240}
             });
-            int expected = 66;
+            int expected = 114;
 
             int actual = matrix.DiagonalSum();
 
@@ -77,10 +77,12 @@ namespace MatrixTraceTests
             Matrix matrix = new(new byte[,]
             {
             {1, 2, 3, 4, 5 },
-            {12, 13, 14, 15, 6 },
-            {11, 10, 9, 8, 7 }
+            {16, 17, 18, 19, 6 },
+            {15, 24, 25, 20, 7 },
+            {14, 23, 22, 21, 8 },
+            {13, 12, 11, 10, 9 }
             });
-            List<byte> expected = new() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            List<byte> expected = new() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
 
             List<byte> actual = matrix.ElementsFormOfSnake();
 

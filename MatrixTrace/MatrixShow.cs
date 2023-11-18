@@ -17,12 +17,12 @@
                     if (i == j)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(matrix[i, j].ToString("000") + " ");
+                        Console.Write($"{matrix[i, j],4}");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                     else
                     {
-                        Console.Write(matrix[i, j].ToString("000") + " ");
+                        Console.Write($"{matrix[i, j],4}");
                     }
                 }
                 Console.WriteLine();
