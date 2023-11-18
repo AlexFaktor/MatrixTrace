@@ -2,20 +2,20 @@
 {
     internal class Program
     {
-        public static int InputNumber(string msg)
-        {
-            while (true)
-            {
-                Console.WriteLine(msg);
-                var input = Console.ReadLine();
-
-                if (int.TryParse(input, out int output))
-                    return output;
-            }
-        }
-
         static void Main()
         {
+            int InputNumber(string msg)
+            {
+                while (true)
+                {
+                    Console.WriteLine(msg);
+                    var input = Console.ReadLine();
+
+                    if (int.TryParse(input, out int output))
+                        return output;
+                }
+            }
+
             var rowCount = InputNumber("Enter the number of rows: ");
             var columnCount = InputNumber("Enter the number of columns: ");
 
