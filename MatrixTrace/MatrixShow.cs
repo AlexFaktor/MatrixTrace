@@ -7,8 +7,8 @@
         /// </summary>
         public static void ShowDiagonal(Matrix matrix)
         {
-            int rows = matrix.Rows;
-            int columns = matrix.Columns;
+            int rows = matrix.RowCount;
+            int columns = matrix.ColumnCount;
 
             for (int i = 0; i < rows; i++)
             {

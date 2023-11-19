@@ -6,6 +6,46 @@ namespace MatrixTraceTests
     public class MatrixTests
     {
         [TestMethod]
+        public void Matrix_ConstructorWithZeroInputRowCount_ShouldThrowException()
+        {
+            ushort inputRowCount = 0;
+            ushort inputColumnCount = 5;
+
+            Assert.ThrowsException<ArgumentException>(() => new Matrix(inputRowCount, inputColumnCount));
+        }
+
+        [TestMethod]
+        public void Matrix_ConstructorWithZeroInputColumnCount_ShouldThrowException()
+        {
+            ushort inputRowCount = 5;
+            ushort inputColumnCount = 0;
+
+            Assert.ThrowsException<ArgumentException>(() => new Matrix(inputRowCount, inputColumnCount));
+        }
+
+        [TestMethod]
+        public void Matrix_ConstructorWithNullInputArray_ShouldThrowException()
+        {
+            byte[,] inputArray = null;
+
+            Assert.ThrowsException<ArgumentNullException>(() => new Matrix(inputArray));
+        }
+        [TestMethod]
+        public void Matrix_ConstructorWithZeroInputArrayRow_ShouldThrowException()
+        {
+            byte[,] inputArray = new byte[0, 5];
+
+            Assert.ThrowsException<ArgumentException>(() => new Matrix(inputArray));
+        }
+
+        public void Matrix_ConstructorWithZeroInputArrayColumn_ShouldThrowException()
+        {
+            byte[,] inputArray = new byte[5, 0];
+
+            Assert.ThrowsException<ArgumentException>(() => new Matrix(inputArray));
+        }
+
+        [TestMethod]
         public void DiagonaSum_WithValidSquareMatrix_ShouldReturnExpectedValue()
         {
             Matrix matrix = new(new byte[,]

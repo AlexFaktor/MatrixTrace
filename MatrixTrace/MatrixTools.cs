@@ -9,8 +9,8 @@
         {
             Random random = new();
 
-            int rowCount = matrix.Rows;
-            int columnCount = matrix.Columns;
+            int rowCount = matrix.RowCount;
+            int columnCount = matrix.ColumnCount;
 
             for (int i = 0; i < rowCount; i++)
             {

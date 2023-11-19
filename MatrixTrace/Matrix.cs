@@ -3,11 +3,11 @@
     public class Matrix
     {
         private readonly ushort _rowCount;
-        private readonly ushort _columnsCount;
+        private readonly ushort _columnCount;
         private byte[,] _matrix;
 
-        public ushort Rows => _rowCount;
-        public ushort Columns => _columnsCount;
+        public ushort RowCount => _rowCount;
+        public ushort ColumnCount => _columnCount;
 
         public byte this[int row, int column]
         {
@@ -24,10 +24,10 @@
         public Matrix(ushort rows, ushort columns)
         {
             if (rows == 0 || columns == 0)
-                throw new Exception("Matrix dimensions must be greater than 0");
+                throw new ArgumentException("Matrix dimensions must be greater than 0");
 
             _rowCount = rows;
-            _columnsCount = columns;
+            _columnCount = columns;
             _matrix = new byte[rows, columns];
         }
 
@@ -35,14 +35,16 @@
         {
             if (matrix == null)
                 throw new ArgumentNullException(nameof(matrix), "The matrix cannot be null");
+            if (matrix.GetLength(0) == 0 || matrix.GetLength(1) == 0)
+                throw new ArgumentException(nameof(matrix), "Size cant be 0");
 
             _rowCount = (ushort)matrix.GetLength(0);
-            _columnsCount = (ushort)matrix.GetLength(1);
-            _matrix = new byte[_rowCount, _columnsCount];
+            _columnCount = (ushort)matrix.GetLength(1);
+            _matrix = new byte[_rowCount, _columnCount];
 
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (int i = 0; i < _rowCount; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < _columnCount; j++)
                 {
                     _matrix[i, j] = matrix[i, j];
                 }
@@ -56,7 +58,7 @@
         {
             int sum = 0;
 
-            int minSize = Math.Min(_rowCount, _columnsCount);
+            int minSize = Math.Min(_rowCount, _columnCount);
 
             for (int i = 0; i < minSize; i++)
             {
@@ -115,13 +117,13 @@
         /// </summary>s>
         public List<byte> ElementsFormOfSnake()
         {
-            int sumOfAllElements = _rowCount * _columnsCount;
+            int sumOfAllElements = _rowCount * _columnCount;
             int addedElements = 0;
 
             System.Drawing.Point position = new(0, 0);
 
             int forRows = _rowCount - 2;
-            int forColumns = _columnsCount;
+            int forColumns = _columnCount;
 
             List<byte> output = new();
 
